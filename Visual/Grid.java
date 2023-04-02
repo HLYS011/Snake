@@ -37,7 +37,7 @@ public class Grid extends JComponent implements KeyListener {
             }
         }
         for (Case c : s.body) {
-            if (c.isHead) {
+            if (c.equals(s.body.get(0))) {
                 gra.setColor(new Color(0, 150, 0));
             } else {
                 gra.setColor(Color.green);
@@ -63,26 +63,26 @@ public class Grid extends JComponent implements KeyListener {
     public void keyReleased(KeyEvent e) {
         switch (e.getKeyCode()) {
             case 38:
-                if (s.head.direction != "DOWN")
+                if (s.body.get(s.body.size() - 1).direction != "DOWN")
                     s.head.direction = "UP";
                 break;
             case 37:
-                if (s.head.direction != "RIGHT")
+                if (s.body.get(s.body.size() - 1).direction != "RIGHT")
                     s.head.direction = "LEFT";
                 break;
             case 40:
-                if (s.head.direction != "UP")
+                if (s.body.get(s.body.size() - 1).direction != "UP")
                     s.head.direction = "DOWN";
                 break;
             case 39:
-                if (s.head.direction != "LEFT")
+                if (s.body.get(s.body.size() - 1).direction != "LEFT")
                     s.head.direction = "RIGHT";
                 break;
         }
-
         s.moveSnake();
-        checkFood();
         s.inheritDir();
+        checkFood();
+
         repaint();
     }
 

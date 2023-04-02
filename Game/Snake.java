@@ -11,7 +11,6 @@ public class Snake {
 
     public Snake() {
         head = new Case(4, 4);
-        head.isHead = true;
         body.add(head);
     }
 
@@ -24,25 +23,37 @@ public class Snake {
     }
 
     public void moveSnake() {
-        for (Case c : body) {
-            switch (c.direction) {
-                case "UP":
-                    c.y--;
-                    break;
-                case "DOWN":
-                    c.y++;
-                    break;
-                case "LEFT":
-                    c.x--;
-                    break;
-                case "RIGHT":
-                    c.x++;
-                    break;
-                default:
-                    return;
-            }
-        }
-
+        /*
+         * System.out.println(body.size());
+         * System.out.println(body.get(0).direction);
+         * switch (body.get(0).direction) {
+         * case "UP":
+         * body.add(0, new Case(body.get(0).x, body.get(0).y - 1));
+         * break;
+         * case "RIGHT":
+         * body.add(0, new Case(body.get(0).x + 1, body.get(0).y));
+         * break;
+         * case "DOWN":
+         * body.add(0, new Case(body.get(0).x, body.get(0).y + 1));
+         * break;
+         * case "LEFT":
+         * body.add(0, new Case(body.get(0).x - 1, body.get(0).y));
+         * break;
+         * 
+         * }
+         * System.out.println(body.get(0).direction + " " + body.get(body.size() -
+         * 1).direction);
+         * 
+         * body.get(body.size() - 1).direction = body.get(0).direction;
+         * body.remove(body.size() - 1);
+         * System.out.println(body.size());
+         */
+        Case previous_head = body.get(body.size() - 1);
+        // Créer la prochaine tête
+        addTile();
+        body.get(body.size() - 1).direction = previous_head.direction;
+        // Supprimer l'ancienne
+        body.remove(previous_head);
     }
 
     public void addTile() {

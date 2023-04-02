@@ -12,6 +12,5 @@ public class Fruit {
     public void changePos() {
         this.x = (int) (Math.random() * 8);
         this.y = (int) (Math.random() * 8);
-        System.out.println(x + " " + y);
     }
 }
