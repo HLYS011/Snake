@@ -76,7 +76,7 @@ public class Grid extends JComponent implements KeyListener {
                 break;
         }
         s.moveSnake();
-        s.inheritDir();
+        // s.inheritDir();
         checkFood();
 
         repaint();

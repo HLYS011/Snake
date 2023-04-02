@@ -14,14 +14,15 @@ public class Snake {
         body.add(head);
     }
 
-    public void inheritDir() {
-        if (body.get(body.size() - 1).direction != "null") {
-            for (int i = 0; i < body.size() - 1; i++) {
-                body.get(i + 1).direction = body.get(i).direction;
-            }
-        }
-    }
-
+    /*
+     * public void inheritDir() {
+     * if (body.get(body.size() - 1).direction != "null") {
+     * for (int i = 0; i < body.size() - 1; i++) {
+     * body.get(i + 1).direction = body.get(i).direction;
+     * }
+     * }
+     * }
+     */
     public void moveSnake() {
         /*
          * System.out.println(body.size());
