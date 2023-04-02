@@ -63,20 +63,16 @@ public class Grid extends JComponent implements KeyListener {
     public void keyReleased(KeyEvent e) {
         switch (e.getKeyCode()) {
             case 38:
-                if (s.body.get(s.body.size() - 1).direction != "DOWN")
-                    s.head.direction = "UP";
+                s.body.get(s.body.size() - 1).direction = "UP";
                 break;
             case 37:
-                if (s.body.get(s.body.size() - 1).direction != "RIGHT")
-                    s.head.direction = "LEFT";
+                s.body.get(s.body.size() - 1).direction = "LEFT";
                 break;
             case 40:
-                if (s.body.get(s.body.size() - 1).direction != "UP")
-                    s.head.direction = "DOWN";
+                s.body.get(s.body.size() - 1).direction = "DOWN";
                 break;
             case 39:
-                if (s.body.get(s.body.size() - 1).direction != "LEFT")
-                    s.head.direction = "RIGHT";
+                s.body.get(s.body.size() - 1).direction = "RIGHT";
                 break;
         }
         s.moveSnake();
@@ -92,7 +88,7 @@ public class Grid extends JComponent implements KeyListener {
     }
 
     public void checkFood() {
-        if (s.head.x == f.x && s.head.y == f.y) {
+        if (s.body.get(s.body.size() - 1).x == f.x && s.body.get(s.body.size() - 1).y == f.y) {
 
             f.changePos();
             s.addTile();

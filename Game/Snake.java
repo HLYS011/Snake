@@ -15,7 +15,7 @@ public class Snake {
     }
 
     public void inheritDir() {
-        if (head.direction != "null") {
+        if (body.get(body.size() - 1).direction != "null") {
             for (int i = 0; i < body.size() - 1; i++) {
                 body.get(i + 1).direction = body.get(i).direction;
             }
@@ -59,17 +59,18 @@ public class Snake {
     public void addTile() {
         switch (body.get(body.size() - 1).direction) {
             case "UP":
-                body.add(new Case(body.get(body.size() - 1).x, body.get(body.size() - 1).y + 1));
-                break;
-            case "LEFT":
-                body.add(new Case(body.get(body.size() - 1).x + 1, body.get(body.size() - 1).y));
-                break;
-            case "DOWN":
                 body.add(new Case(body.get(body.size() - 1).x, body.get(body.size() - 1).y - 1));
                 break;
-            case "RIGHT":
+            case "LEFT":
                 body.add(new Case(body.get(body.size() - 1).x - 1, body.get(body.size() - 1).y));
                 break;
+            case "DOWN":
+                body.add(new Case(body.get(body.size() - 1).x, body.get(body.size() - 1).y + 1));
+                break;
+            case "RIGHT":
+                body.add(new Case(body.get(body.size() - 1).x + 1, body.get(body.size() - 1).y));
+                break;
         }
+        body.get(body.size() - 1).direction = body.get(body.size() - 2).direction;
     }
 }
