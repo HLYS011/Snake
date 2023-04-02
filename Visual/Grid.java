@@ -6,10 +6,10 @@ import javax.swing.*;
 import Game.*;
 
 public class Grid extends JComponent implements KeyListener {
-    public static int size = 8;
+    public static int size = 16;
     public Fruit f = new Fruit(size);
     public Case[][] grid = new Case[size][size];
-    public static final int tileSize = 80;
+    public static final int tileSize = 40;
     Snake s;
 
     public Grid() {
@@ -89,10 +89,10 @@ public class Grid extends JComponent implements KeyListener {
 
     public void checkFood() {
         if (s.body.get(s.body.size() - 1).x == f.x && s.body.get(s.body.size() - 1).y == f.y) {
-
+            s.ate = true;
             f.changePos();
-            s.addTile();
+            // s.addTile();
+            return;
         }
-
     }
 }

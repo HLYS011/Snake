@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import Visual.Grid;
 
 public class Snake {
+    public boolean ate = false;
     public Case head;
     public int snakeSize = 1;
     public ArrayList<Case> body = new ArrayList<Case>();
@@ -54,7 +55,9 @@ public class Snake {
         addTile();
         body.get(body.size() - 1).direction = previous_head.direction;
         // Supprimer l'ancienne
-        body.remove(previous_head);
+        if (!ate)
+            body.remove(body.get(0));
+        ate = false;
     }
 
     public void addTile() {
